@@ -1,25 +1,13 @@
-class ProfileController < ApplicationController
-    before_action :set_profile, only: %i[show update destroy]
-
-  # GET /profiles
-  def index
-    @profiles = Profile.all
-    render json: @profiles, status: :ok
-  end
+# app/controllers/profiles_controller.rb
+class ProfilesController < ApplicationController
+  before_action :set_profile, only: %i[show update destroy]
 
   # GET /profiles/:id
   def show
-    render json: @profile, status: :ok
-  end
-
-  # POST /profiles
-  def create
-    @profile = Profile.new(profile_params)
-    if @profile.save
-      render json: @profile, status: :created
-    else
-      render json: { errors: @profile.errors.full_messages }, status: :unprocessable_entity
-    end
+    render json: {
+      profile: @profile,
+      profile_picture_url: @profile.profile_picture.attached? ? url_for(@profile.profile_picture) : nil
+    }, status: :ok
   end
 
   # PATCH/PUT /profiles/:id
@@ -31,12 +19,6 @@ class ProfileController < ApplicationController
     end
   end
 
-  # DELETE /profiles/:id
-  def destroy
-    @profile.destroy
-    head :no_content
-  end
-
   private
 
   def set_profile
@@ -46,6 +28,6 @@ class ProfileController < ApplicationController
   end
 
   def profile_params
-    params.require(:profile).permit(:user_id, :first_name, :last_name, :phone_number, :email)
+    params.require(:profile).permit(:first_name, :last_name, :phone_number, :email, :profile_picture)
   end
 end

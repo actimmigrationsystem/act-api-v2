@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_23_161705) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_23_165729) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,7 +68,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_23_161705) do
     t.date "entry_date"
     t.string "passport_number"
     t.string "reference_number"
-    t.string "document_upload"
     t.string "service_type"
     t.text "elaborate"
     t.datetime "created_at", null: false
