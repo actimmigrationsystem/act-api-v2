@@ -16,6 +16,7 @@ module ActApi
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
     config.active_storage.service = :local
+    config.debug_exception_response_format = :api
 
 
     # Configuration for the application, engines, and railties goes here.
