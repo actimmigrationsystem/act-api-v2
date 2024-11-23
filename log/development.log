@@ -1,0 +1,2 @@
+  [1m[35m (72.2ms)[0m  [1m[35mCREATE DATABASE "act_api_development" ENCODING = 'unicode'[0m
+  [1m[35m (54.7ms)[0m  [1m[35mCREATE DATABASE "act_api_test" ENCODING = 'unicode'[0m
