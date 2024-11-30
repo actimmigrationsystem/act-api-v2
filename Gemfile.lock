@@ -101,6 +101,10 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    dotenv (3.1.4)
+    dotenv-rails (3.1.4)
+      dotenv (= 3.1.4)
+      railties (>= 6.1)
     drb (2.2.1)
     erubi (1.13.0)
     ffi (1.17.0-aarch64-linux-gnu)
@@ -278,6 +282,7 @@ DEPENDENCIES
   brakeman
   debug
   devise
+  dotenv-rails (~> 3.1)
   image_processing (~> 1.2)
   pg (~> 1.1)
   puma (>= 5.0)
