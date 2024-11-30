@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  validates :role, inclusion: { in: %w[client admin] }
+  validates :role, inclusion: { in: %w[client admin superadmin] }
 
   before_validation :set_default_role, on: :create
 
