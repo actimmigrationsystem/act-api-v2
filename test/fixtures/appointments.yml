@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  surname: MyString
+  phonenumber: MyString
+  email: MyString
+  service_type: MyString
+  venue: MyString
+  appointment_date: 2024-11-30 16:07:22
+  appointment_type: MyString
+
+two:
+  name: MyString
+  surname: MyString
+  phonenumber: MyString
+  email: MyString
+  service_type: MyString
+  venue: MyString
+  appointment_date: 2024-11-30 16:07:22
+  appointment_type: MyString

@@ -18,6 +18,16 @@ Rails.application.routes.draw do
   # API versioning
   namespace :api do
     namespace :v1 do
+      get "enquiries/index"
+      get "enquiries/show"
+      get "enquiries/create"
+      get "enquiries/update"
+      get "enquiries/destroy"
+      get "appointments/index"
+      get "appointments/show"
+      get "appointments/create"
+      get "appointments/update"
+      get "appointments/destroy"
       resources :enquiries
       resources :appointments
       resources :profiles
