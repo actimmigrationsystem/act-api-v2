@@ -1,9 +1,50 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+# require 'securerandom'
+
+# SuperAdmin credentials
+superadmin_email = ENV["SUPERADMIN_EMAIL"] || "superadmin@example.com"
+superadmin_password = ENV["SUPERADMIN_PASSWORD"]
+
+if superadmin_password.nil?
+  puts "Error: SUPERADMIN_PASSWORD environment variable is not set!"
+  exit
+end
+
+User.find_or_create_by(email: superadmin_email) do |user|
+  user.password = superadmin_password
+  user.role = "superadmin"
+  user.auth_token ||= SecureRandom.hex(20)
+end
+
+puts "Superadmin created: #{superadmin_email}"
+
+
+# Admin credentials
+admin_email = ENV["ADMIN_EMAIL"] || "admin@example.com"
+admin_password = ENV["ADMIN_PASSWORD"]
+
+if admin_password.nil?
+  puts "Error: ADMIN_PASSWORD environment variable is not set!"
+  exit
+end
+
+User.find_or_create_by(email: admin_email) do |user|
+  user.password = admin_password
+  user.role = "admin"
+  user.auth_token ||= SecureRandom.hex(20)
+end
+
+puts "Admin created: #{admin_email}"
+
+
+
+# Client credentials (no environment variables required for test user)
+client_email = "client@email.com"
+client_password = "Client12456"
+
+User.find_or_create_by(email: client_email) do |user|
+  user.password = client_password
+  user.role = "client"
+  user.auth_token ||= SecureRandom.hex(20)
+end
+
+puts "Client created: #{client_email}"
