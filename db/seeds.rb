@@ -48,3 +48,15 @@ User.find_or_create_by(email: client_email) do |user|
 end
 
 puts "Client created: #{client_email}"
+
+# Create a profile for each user
+User.find_each do |user|
+  user.create_profile(
+    first_name: "YourName",
+    last_name: "LastName",
+    phone_number: "123-456-7890",
+    address: "Default Address"
+  )
+end
+
+puts "Profiles created for all users"

@@ -1149,3 +1149,71 @@ Completed 200 OK in 20ms (Views: 5.0ms | ActiveRecord: 0.0ms (0 queries, 0 cache
 [dotenv] Loaded [33m.env[0m
 [dotenv] Loaded [33m.env[0m
 [dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mSUPERADMIN_EMAIL[0m, [36mSUPERADMIN_PASSWORD[0m, [36mADMIN_EMAIL[0m, and [36mADMIN_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mSUPERADMIN_EMAIL[0m, [36mSUPERADMIN_PASSWORD[0m, [36mADMIN_EMAIL[0m, and [36mADMIN_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2457643521909044280)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (21.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (21.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+Migrating to CreateProfiles (20241207083028)
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (205.2ms)[0m  [1m[35mCREATE TABLE "profiles" ("id" bigserial primary key, "user_id" bigint NOT NULL, "first_name" character varying, "last_name" character varying, "phone_number" character varying, "address" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_e424190865"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE INDEX "index_profiles_on_user_id" ON "profiles" ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20241207083028') RETURNING "version"[0m
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(2457643521909044280)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[dotenv] Set [36mSUPERADMIN_EMAIL[0m, [36mSUPERADMIN_PASSWORD[0m, [36mADMIN_EMAIL[0m, and [36mADMIN_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mSUPERADMIN_EMAIL[0m, [36mSUPERADMIN_PASSWORD[0m, [36mADMIN_EMAIL[0m, and [36mADMIN_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Set [36mSUPERADMIN_EMAIL[0m, [36mSUPERADMIN_PASSWORD[0m, [36mADMIN_EMAIL[0m, and [36mADMIN_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(2457643521909044280)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(2457643521909044280)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[dotenv] Set [36mSUPERADMIN_EMAIL[0m, [36mSUPERADMIN_PASSWORD[0m, [36mADMIN_EMAIL[0m, and [36mADMIN_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+  [1m[36mActiveRecord::SchemaMigration Load (3.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (20.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (6.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "role", "auth_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2024-12-07 08:35:44.805903"], ["updated_at", "2024-12-07 08:35:44.805903"], ["role", "superadmin"], ["auth_token", "[FILTERED]"]]
+  [1m[36mTRANSACTION (4.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Load (25.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1000]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProfile Create (5.0ms)[0m  [1m[32mINSERT INTO "profiles" ("user_id", "first_name", "last_name", "phone_number", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 1], ["first_name", "YourName"], ["last_name", "LastName"], ["phone_number", "123-456-7890"], ["address", "Default Address"], ["created_at", "2024-12-07 08:35:45.064293"], ["updated_at", "2024-12-07 08:35:45.064293"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mProfile Load (2.8ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProfile Create (3.2ms)[0m  [1m[32mINSERT INTO "profiles" ("user_id", "first_name", "last_name", "phone_number", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 2], ["first_name", "YourName"], ["last_name", "LastName"], ["phone_number", "123-456-7890"], ["address", "Default Address"], ["created_at", "2024-12-07 08:35:45.138565"], ["updated_at", "2024-12-07 08:35:45.138565"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mProfile Load (0.3ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1 LIMIT $2[0m  [["user_id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProfile Create (2.9ms)[0m  [1m[32mINSERT INTO "profiles" ("user_id", "first_name", "last_name", "phone_number", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 3], ["first_name", "YourName"], ["last_name", "LastName"], ["phone_number", "123-456-7890"], ["address", "Default Address"], ["created_at", "2024-12-07 08:35:45.179226"], ["updated_at", "2024-12-07 08:35:45.179226"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mProfile Load (0.2ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1 LIMIT $2[0m  [["user_id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProfile Create (2.4ms)[0m  [1m[32mINSERT INTO "profiles" ("user_id", "first_name", "last_name", "phone_number", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 4], ["first_name", "YourName"], ["last_name", "LastName"], ["phone_number", "123-456-7890"], ["address", "Default Address"], ["created_at", "2024-12-07 08:35:45.204339"], ["updated_at", "2024-12-07 08:35:45.204339"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mProfile Load (0.2ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1 LIMIT $2[0m  [["user_id", 4], ["LIMIT", 1]]
+[dotenv] Set [36mSUPERADMIN_EMAIL[0m, [36mSUPERADMIN_PASSWORD[0m, [36mADMIN_EMAIL[0m, and [36mADMIN_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists? (10.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mUser Create (2.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "role", "auth_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2024-12-07 08:36:13.906567"], ["updated_at", "2024-12-07 08:36:13.906567"], ["role", "client"], ["auth_token", "[FILTERED]"]]
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (27.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mProfile Create (29.0ms)[0m  [1m[32mINSERT INTO "profiles" ("user_id", "first_name", "last_name", "phone_number", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["user_id", 5], ["first_name", "John"], ["last_name", "Doe"], ["phone_number", "123-456-7890"], ["address", "123 Main St"], ["created_at", "2024-12-07 08:36:14.085303"], ["updated_at", "2024-12-07 08:36:14.085303"]]
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mProfile Load (1.2ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1 LIMIT $2[0m  [["user_id", 5], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mProfile Load (0.4ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."user_id" = $1 LIMIT $2[0m  [["user_id", 1], ["LIMIT", 1]]
