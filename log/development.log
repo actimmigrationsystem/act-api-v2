@@ -1974,3 +1974,171 @@ Processing by Api::V1::Users::RegistrationsController#create as HTML
 Completed 201 Created in 497ms (Views: 4.7ms | ActiveRecord: 60.8ms (2 queries, 0 cached) | GC: 8.5ms)
 
 
+Started POST "/api/v1/users/sign_in" for ::1 at 2024-12-07 19:46:18 +0200
+Processing by Api::V1::Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}}
+Params received: #<ActionController::Parameters {"user"=>{"email"=>"test@email.com", "password"=>"Test123"}, "controller"=>"api/v1/users/sessions", "action"=>"create", "session"=>{"user"=>{"email"=>"test@email.com", "password"=>"Test123"}}} permitted: false>
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (3.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+  [1m[36mUser Update (34.6ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "auth_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2024-12-07 17:46:19.232500"], ["auth_token", "[FILTERED]"], ["id", 2]]
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+Completed 200 OK in 468ms (Views: 8.7ms | ActiveRecord: 37.9ms (2 queries, 0 cached) | GC: 36.2ms)
+
+
+Started POST "/api/v1/users/sign_in" for ::1 at 2024-12-07 19:55:12 +0200
+Processing by Api::V1::Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}}
+Params received: #<ActionController::Parameters {"user"=>{"email"=>"superadmin@act-system", "password"=>"superpassword123"}, "controller"=>"api/v1/users/sessions", "action"=>"create", "session"=>{"user"=>{"email"=>"superadmin@act-system", "password"=>"superpassword123"}}} permitted: false>
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+  [1m[36mUser Update (16.5ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "auth_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2024-12-07 17:55:12.588051"], ["auth_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (8.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+Completed 200 OK in 456ms (Views: 12.9ms | ActiveRecord: 59.1ms (2 queries, 0 cached) | GC: 84.5ms)
+
+
+Started POST "/api/v1/users/sign_in" for ::1 at 2024-12-07 19:55:41 +0200
+Processing by Api::V1::Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}}
+Params received: #<ActionController::Parameters {"user"=>{"email"=>"admin@act-system", "password"=>"adminpassword123"}, "controller"=>"api/v1/users/sessions", "action"=>"create", "session"=>{"user"=>{"email"=>"admin@act-system", "password"=>"adminpassword123"}}} permitted: false>
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:14:in `create'
+Completed 404 Not Found in 25ms (Views: 7.5ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/users/sign_in" for ::1 at 2024-12-07 19:59:57 +0200
+Processing by Api::V1::Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}}
+Params received: #<ActionController::Parameters {"user"=>{"email"=>"admin@act-system", "password"=>"adminpassword123"}, "controller"=>"api/v1/users/sessions", "action"=>"create", "session"=>{"user"=>{"email"=>"admin@act-system", "password"=>"adminpassword123"}}} permitted: false>
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:14:in `create'
+Completed 404 Not Found in 15ms (Views: 2.2ms | ActiveRecord: 0.3ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/users/sign_in" for ::1 at 2024-12-07 20:01:02 +0200
+Processing by Api::V1::Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}}
+Params received: #<ActionController::Parameters {"user"=>{"email"=>"superadmin@act-system", "password"=>"superpassword123"}, "controller"=>"api/v1/users/sessions", "action"=>"create", "session"=>{"user"=>{"email"=>"superadmin@act-system", "password"=>"superpassword123"}}} permitted: false>
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+  [1m[36mUser Update (22.8ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "auth_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2024-12-07 18:01:02.957251"], ["auth_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+Completed 200 OK in 308ms (Views: 16.3ms | ActiveRecord: 24.3ms (2 queries, 0 cached) | GC: 3.9ms)
+
+
+Started POST "/api/v1/users/sign_in" for ::1 at 2024-12-07 20:29:21 +0200
+Processing by Api::V1::Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}}
+Params received: #<ActionController::Parameters {"user"=>{"email"=>"superadmin@act-system", "password"=>"superpassword123"}, "controller"=>"api/v1/users/sessions", "action"=>"create", "session"=>{"user"=>{"email"=>"superadmin@act-system", "password"=>"superpassword123"}}} permitted: false>
+  [1m[36mUser Load (25.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+  [1m[36mUser Update (3.8ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "auth_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2024-12-07 18:29:21.877215"], ["auth_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (9.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+Completed 200 OK in 418ms (Views: 1.3ms | ActiveRecord: 104.6ms (2 queries, 0 cached) | GC: 4.9ms)
+
+
+Started POST "/api/v1/users/sign_in" for ::1 at 2024-12-07 21:37:16 +0200
+Processing by Api::V1::Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}}
+Params received: #<ActionController::Parameters {"user"=>{"email"=>"superadmin@act-system", "password"=>"superpassword123"}, "controller"=>"api/v1/users/sessions", "action"=>"create", "session"=>{"user"=>{"email"=>"superadmin@act-system", "password"=>"superpassword123"}}} permitted: false>
+  [1m[36mUser Load (21.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+  [1m[36mUser Update (19.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "auth_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2024-12-07 19:37:17.325685"], ["auth_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (5.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+Completed 200 OK in 449ms (Views: 2.4ms | ActiveRecord: 98.4ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/users/sign_in" for ::1 at 2024-12-07 23:15:45 +0200
+Processing by Api::V1::Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}}
+Params received: #<ActionController::Parameters {"user"=>{"email"=>"superadmin@act-system", "password"=>"superpassword123"}, "controller"=>"api/v1/users/sessions", "action"=>"create", "session"=>{"user"=>{"email"=>"superadmin@act-system", "password"=>"superpassword123"}}} permitted: false>
+  [1m[36mUser Load (30.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+  [1m[36mUser Update (20.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "auth_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2024-12-07 21:15:46.629878"], ["auth_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (11.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+Completed 200 OK in 795ms (Views: 2.9ms | ActiveRecord: 223.0ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/users/sign_in" for ::1 at 2024-12-07 23:18:05 +0200
+Processing by Api::V1::Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}}
+Params received: #<ActionController::Parameters {"user"=>{"email"=>"superadmin@act-system", "password"=>"superpassword123"}, "controller"=>"api/v1/users/sessions", "action"=>"create", "session"=>{"user"=>{"email"=>"superadmin@act-system", "password"=>"superpassword123"}}} permitted: false>
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+  [1m[36mUser Update (10.6ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "auth_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2024-12-07 21:18:05.947723"], ["auth_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (5.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+Completed 200 OK in 464ms (Views: 5.0ms | ActiveRecord: 19.0ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/users/sign_in" for ::1 at 2024-12-07 23:18:44 +0200
+Processing by Api::V1::Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}}
+Params received: #<ActionController::Parameters {"user"=>{"email"=>"superadmin@act-system", "password"=>"superpassword123"}, "controller"=>"api/v1/users/sessions", "action"=>"create", "session"=>{"user"=>{"email"=>"superadmin@act-system", "password"=>"superpassword123"}}} permitted: false>
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+  [1m[36mUser Update (9.0ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "auth_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2024-12-07 21:18:45.185278"], ["auth_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (11.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+Completed 200 OK in 425ms (Views: 1.2ms | ActiveRecord: 22.3ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/users/sign_in" for ::1 at 2024-12-07 23:29:46 +0200
+Processing by Api::V1::Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}}
+Params received: #<ActionController::Parameters {"user"=>{"email"=>"superadmin@act-system", "password"=>"superpassword123"}, "controller"=>"api/v1/users/sessions", "action"=>"create", "session"=>{"user"=>{"email"=>"superadmin@act-system", "password"=>"superpassword123"}}} permitted: false>
+  [1m[36mUser Load (6.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+  [1m[36mUser Update (2.7ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "auth_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2024-12-07 21:29:47.083532"], ["auth_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (9.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+Completed 200 OK in 549ms (Views: 2.6ms | ActiveRecord: 67.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/users/sign_in" for ::1 at 2024-12-08 01:22:53 +0200
+Processing by Api::V1::Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}}
+Params received: #<ActionController::Parameters {"user"=>{"email"=>"superadmin@act-system", "password"=>"superpassword123"}, "controller"=>"api/v1/users/sessions", "action"=>"create", "session"=>{"user"=>{"email"=>"superadmin@act-system", "password"=>"superpassword123"}}} permitted: false>
+  [1m[36mUser Load (27.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:14:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+  [1m[36mUser Update (580.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "auth_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2024-12-07 23:22:53.673260"], ["auth_token", "[FILTERED]"], ["id", 1]]
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+  [1m[36mTRANSACTION (13.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:22:in `create'
+Completed 200 OK in 1128ms (Views: 0.4ms | ActiveRecord: 666.7ms (2 queries, 0 cached) | GC: 295.5ms)
+
+
