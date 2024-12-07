@@ -1144,3 +1144,8 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 20ms (Views: 5.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
 
 
+[dotenv] Set [36mSUPERADMIN_EMAIL[0m, [36mSUPERADMIN_PASSWORD[0m, [36mADMIN_EMAIL[0m, and [36mADMIN_PASSWORD[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Loaded [33m.env[0m
+[dotenv] Loaded [33m.env[0m
