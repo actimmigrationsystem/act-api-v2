@@ -5,7 +5,7 @@ class User < ApplicationRecord
   validates :role, inclusion: { in: %w[client admin superadmin] }
 
   before_validation :set_default_role, on: :create
-
+  has_one :profile, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
