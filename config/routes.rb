@@ -1,11 +1,25 @@
 Rails.application.routes.draw do
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
-  # Devise routes for authentication
-  devise_for :users, controllers: {
-    registrations: 'users/registrations',
-    sessions: 'users/sessions'
-  }
+
+  # Devise routes for authentication under API namespace
+  namespace :api do
+    namespace :v1 do
+      # Default route for /api/v1
+      get '/', to: 'base#index'
+
+      # Devise user routes
+      devise_for :users, controllers: {
+        registrations: 'api/v1/users/registrations',
+        sessions: 'api/v1/users/sessions'
+      }
+
+      # Other resources
+      resources :enquiries, only: [:index, :show, :create, :update, :destroy]
+      resources :appointments, only: [:index, :show, :create, :update, :destroy]
+      resources :profiles, only: [:index, :show, :create, :update, :destroy]
+    end
+  end
 
   # SuperAdmin namespace
   namespace :super_admin do
@@ -23,16 +37,7 @@ Rails.application.routes.draw do
     resources :dashboard, only: [:index]
   end
 
-  # API versioning
-  namespace :api do
-    namespace :v1 do
-      resources :enquiries, only: [:index, :show, :create, :update, :destroy]
-      resources :appointments, only: [:index, :show, :create, :update, :destroy]
-      resources :profiles, only: [:index, :show, :create, :update, :destroy]
-    end
-  end
-
-  # Root path for Rails welcome page
+  # Root path
   root to: "rails/welcome#index"
 
   # Health check route

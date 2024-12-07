@@ -1,7 +1,7 @@
 # require 'securerandom'
 
 # SuperAdmin credentials
-superadmin_email = ENV["SUPERADMIN_EMAIL"] || "superadmin@example.com"
+superadmin_email = ENV["SUPERADMIN_EMAIL"]
 superadmin_password = ENV["SUPERADMIN_PASSWORD"]
 
 if superadmin_password.nil?
@@ -19,7 +19,7 @@ puts "Superadmin created: #{superadmin_email}"
 
 
 # Admin credentials
-admin_email = ENV["ADMIN_EMAIL"] || "admin@example.com"
+admin_email = ENV["ADMIN_EMAIL"] || 
 admin_password = ENV["ADMIN_PASSWORD"]
 
 if admin_password.nil?
