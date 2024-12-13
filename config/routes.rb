@@ -29,7 +29,6 @@ Rails.application.routes.draw do
   # Admin namespace
   namespace :admin do
     get "dashboard/index"
-    resources :dashboard, only: [:index]
   end
 
   # Client namespace

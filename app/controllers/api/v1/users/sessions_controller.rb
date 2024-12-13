@@ -14,18 +14,23 @@ module Api
         user = User.find_by(email: sign_in_params[:email])
 
         if user.nil?
+          Rails.logger.debug("User not found for email: #{sign_in_params[:email]}")
           render json: { error: 'Email not found.' }, status: :not_found
           return
         end
 
+        Rails.logger.debug("User found: #{user.inspect}")
+
         if user.valid_password?(sign_in_params[:password])
+          Rails.logger.debug("Password valid for user: #{user.email}")
           user.update(auth_token: SecureRandom.hex(20)) # Generate and update the token
-          render json: { 
-            message: 'Logged in successfully.', 
-            user: user, 
-            token: user.auth_token 
+          render json: {
+            message: 'Logged in successfully.',
+            user: { email: user.email, role: user.role },
+            token: user.auth_token
           }, status: :ok
         else
+          Rails.logger.debug("Invalid password for user: #{user.email}")
           render json: { error: 'Invalid password.' }, status: :unauthorized
         end
       end
