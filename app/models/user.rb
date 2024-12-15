@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   # Associations
   has_one :profile, dependent: :destroy
+  has_many :enquiries, dependent: :destroy
 
   # Validations
   validates :role, inclusion: { in: %w[client admin superadmin] }

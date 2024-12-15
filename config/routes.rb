@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       # Default route for /api/v1
       get '/', to: 'base#index'
+      get 'enquiries/by_user/:id', to: 'enquiries#show_by_id'
 
       # Devise user routes
       devise_for :users, controllers: {
@@ -15,30 +16,30 @@ Rails.application.routes.draw do
       }
 
       # Other resources
-      resources :enquiries, only: [:index, :show, :create, :update, :destroy]
-      resources :appointments, only: [:index, :show, :create, :update, :destroy]
-      resources :profiles, only: [:index, :show, :create, :update, :destroy]
+      resources :enquiries, only: %i[index show create update destroy]
+      resources :appointments, only: %i[index show create update destroy]
+      resources :profiles, only: %i[index show create update destroy]
     end
   end
 
   # SuperAdmin namespace
   namespace :super_admin do
-    get "dashboard/index"
+    get 'dashboard/index'
   end
 
   # Admin namespace
   namespace :admin do
-    get "dashboard/index"
+    get 'dashboard/index'
   end
 
   # Client namespace
   namespace :client do
-    resources :dashboard, only: [:index]
+    resources :dashboard, only: %i[index show]
   end
 
   # Root path
-  root to: "rails/welcome#index"
+  root to: 'rails/welcome#index'
 
   # Health check route
-  get "up" => "rails/health#show", as: :rails_health_check
+  get 'up' => 'rails/health#show', as: :rails_health_check
 end
