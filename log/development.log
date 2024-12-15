@@ -5263,3 +5263,350 @@ Target User: #<User id: 4, email: [FILTERED], created_at: "2024-12-13 01:49:11.0
 Completed 200 OK in 16ms (Views: 8.8ms | ActiveRecord: 1.0ms (4 queries, 1 cached) | GC: 0.6ms)
 
 
+Started GET "/api/v1/enquiries/by_user/:id" for ::1 at 2024-12-15 16:20:18 +0200
+Processing by Api::V1::EnquiriesController#show_by_id as JSON
+  Parameters: {"id"=>":id"}
+Authorization Header: 6c0969c58e1a9008d850ceabf29dcaac4376c525
+Extracted Token: 6c0969c58e1a9008d850ceabf29dcaac4376c525
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:22:in `authenticate_user!'
+User found: #<User id: 4, email: [FILTERED], created_at: "2024-12-13 01:49:11.082948000 +0000", updated_at: "2024-12-15 13:08:11.131045000 +0000", role: "client", auth_token: [FILTERED]>
+Authorization Header: 6c0969c58e1a9008d850ceabf29dcaac4376c525
+Extracted Token: 6c0969c58e1a9008d850ceabf29dcaac4376c525
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enquiries_controller.rb:42:in `show_by_id'
+User Found: #<User id: 4, email: [FILTERED], created_at: "2024-12-13 01:49:11.082948000 +0000", updated_at: "2024-12-15 13:08:11.131045000 +0000", role: "client", auth_token: [FILTERED]>
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enquiries_controller.rb:45:in `show_by_id'
+Target User: nil
+Completed 403 Forbidden in 38ms (Views: 4.3ms | ActiveRecord: 1.9ms (3 queries, 1 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/enquiries/by_user/:4" for ::1 at 2024-12-15 16:20:23 +0200
+Processing by Api::V1::EnquiriesController#show_by_id as JSON
+  Parameters: {"id"=>":4"}
+Authorization Header: 6c0969c58e1a9008d850ceabf29dcaac4376c525
+Extracted Token: 6c0969c58e1a9008d850ceabf29dcaac4376c525
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:22:in `authenticate_user!'
+User found: #<User id: 4, email: [FILTERED], created_at: "2024-12-13 01:49:11.082948000 +0000", updated_at: "2024-12-15 13:08:11.131045000 +0000", role: "client", auth_token: [FILTERED]>
+Authorization Header: 6c0969c58e1a9008d850ceabf29dcaac4376c525
+Extracted Token: 6c0969c58e1a9008d850ceabf29dcaac4376c525
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enquiries_controller.rb:42:in `show_by_id'
+User Found: #<User id: 4, email: [FILTERED], created_at: "2024-12-13 01:49:11.082948000 +0000", updated_at: "2024-12-15 13:08:11.131045000 +0000", role: "client", auth_token: [FILTERED]>
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enquiries_controller.rb:45:in `show_by_id'
+Target User: nil
+Completed 403 Forbidden in 14ms (Views: 0.2ms | ActiveRecord: 0.7ms (3 queries, 1 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/enquiries/by_user/:4" for ::1 at 2024-12-15 16:20:35 +0200
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/enquiries/by_user/:4"):
+  
+Started POST "/api/v1/enquiries/by_user/4" for ::1 at 2024-12-15 16:21:06 +0200
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/enquiries/by_user/4"):
+  
+Started GET "/api/v1/enquiries/by_user/4" for ::1 at 2024-12-15 16:26:58 +0200
+Processing by Api::V1::EnquiriesController#show_by_id as JSON
+  Parameters: {"id"=>"4"}
+Authorization Header: 6c0969c58e1a9008d850ceabf29dcaac4376c525
+Extracted Token: 6c0969c58e1a9008d850ceabf29dcaac4376c525
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:22:in `authenticate_user!'
+User found: #<User id: 4, email: [FILTERED], created_at: "2024-12-13 01:49:11.082948000 +0000", updated_at: "2024-12-15 13:08:11.131045000 +0000", role: "client", auth_token: [FILTERED]>
+Authorization Header: 6c0969c58e1a9008d850ceabf29dcaac4376c525
+Extracted Token: 6c0969c58e1a9008d850ceabf29dcaac4376c525
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enquiries_controller.rb:42:in `show_by_id'
+User Found: #<User id: 4, email: [FILTERED], created_at: "2024-12-13 01:49:11.082948000 +0000", updated_at: "2024-12-15 13:08:11.131045000 +0000", role: "client", auth_token: [FILTERED]>
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/enquiries_controller.rb:45:in `show_by_id'
+Target User: #<User id: 4, email: [FILTERED], created_at: "2024-12-13 01:49:11.082948000 +0000", updated_at: "2024-12-15 13:08:11.131045000 +0000", role: "client", auth_token: [FILTERED]>
+  [1m[36mEnquiry Load (0.8ms)[0m  [1m[34mSELECT "enquiries".* FROM "enquiries" WHERE "enquiries"."user_id" = $1[0m  [["user_id", 4]]
+  ↳ app/controllers/api/v1/enquiries_controller.rb:61:in `show_by_id'
+Completed 200 OK in 92ms (Views: 11.6ms | ActiveRecord: 23.3ms (4 queries, 1 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/enquiries" for ::1 at 2024-12-15 16:30:31 +0200
+Processing by Api::V1::EnquiriesController#create as HTML
+  Parameters: {"enquiry"=>{"name"=>"Rachel Riley", "surname"=>"Manda", "phonenumber"=>"0825352102", "email"=>"[FILTERED]", "gender"=>"", "dob"=>"Sun Dec 15 2024 16:30:24 GMT+0200 (South Africa Standard Time)", "maritalStatus"=>"", "residentialAddress"=>"", "entryDate"=>"Sun Dec 15 2024 16:30:24 GMT+0200 (South Africa Standard Time)", "passportNumber"=>"", "referenceNumber"=>"", "serviceType"=>"", "elaborate"=>"Testing", "document_upload"=>"", "immigrationStatus"=>"", "venue"=>"", "appointmentType"=>"", "appointmentDate"=>"Sun Dec 15 2024 16:30:24 GMT+0200 (South Africa Standard Time)", "nationality"=>"", "idNumber"=>"", "city"=>"", "address"=>"", "postalCode"=>"", "additionalInfo"=>"", "status"=>"", "createdAt"=>"Sun Dec 15 2024 16:30:24 GMT+0200 (South Africa Standard Time)", "updatedAt"=>"Sun Dec 15 2024 16:30:24 GMT+0200 (South Africa Standard Time)"}}
+Authorization Header: Bearer 6c0969c58e1a9008d850ceabf29dcaac4376c525
+Extracted Token: 6c0969c58e1a9008d850ceabf29dcaac4376c525
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:22:in `authenticate_user!'
+User found: #<User id: 4, email: [FILTERED], created_at: "2024-12-13 01:49:11.082948000 +0000", updated_at: "2024-12-15 13:08:11.131045000 +0000", role: "client", auth_token: [FILTERED]>
+[31mUnpermitted parameters: :maritalStatus, :residentialAddress, :entryDate, :passportNumber, :referenceNumber, :serviceType, :document_upload, :immigrationStatus, :venue, :appointmentType, :appointmentDate, :nationality, :idNumber, :city, :address, :postalCode, :additionalInfo, :status, :createdAt, :updatedAt. Context: { controller: Api::V1::EnquiriesController, action: create, request: #<ActionDispatch::Request:0x000000012acb5978>, params: {"enquiry"=>{"name"=>"Rachel Riley", "surname"=>"Manda", "phonenumber"=>"0825352102", "email"=>"[FILTERED]", "gender"=>"", "dob"=>"Sun Dec 15 2024 16:30:24 GMT+0200 (South Africa Standard Time)", "maritalStatus"=>"", "residentialAddress"=>"", "entryDate"=>"Sun Dec 15 2024 16:30:24 GMT+0200 (South Africa Standard Time)", "passportNumber"=>"", "referenceNumber"=>"", "serviceType"=>"", "elaborate"=>"Testing", "document_upload"=>"", "immigrationStatus"=>"", "venue"=>"", "appointmentType"=>"", "appointmentDate"=>"Sun Dec 15 2024 16:30:24 GMT+0200 (South Africa Standard Time)", "nationality"=>"", "idNumber"=>"", "city"=>"", "address"=>"", "postalCode"=>"", "additionalInfo"=>"", "status"=>"", "createdAt"=>"Sun Dec 15 2024 16:30:24 GMT+0200 (South Africa Standard Time)", "updatedAt"=>"Sun Dec 15 2024 16:30:24 GMT+0200 (South Africa Standard Time)"}, "controller"=>"api/v1/enquiries", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/enquiries_controller.rb:20:in `create'
+  [1m[36mEnquiry Create (31.7ms)[0m  [1m[32mINSERT INTO "enquiries" ("name", "surname", "phonenumber", "email", "gender", "dob", "marital_status", "residential_address", "entry_date", "passport_number", "reference_number", "service_type", "elaborate", "immigration_status", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"[0m  [["name", "Rachel Riley"], ["surname", "Manda"], ["phonenumber", "0825352102"], ["email", "[FILTERED]"], ["gender", ""], ["dob", "2024-12-15"], ["marital_status", nil], ["residential_address", nil], ["entry_date", nil], ["passport_number", nil], ["reference_number", nil], ["service_type", nil], ["elaborate", "Testing"], ["immigration_status", nil], ["created_at", "2024-12-15 14:30:32.037015"], ["updated_at", "2024-12-15 14:30:32.037015"], ["user_id", 4]]
+  ↳ app/controllers/api/v1/enquiries_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (74.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/enquiries_controller.rb:20:in `create'
+Completed 201 Created in 331ms (Views: 10.4ms | ActiveRecord: 108.8ms (2 queries, 0 cached) | GC: 72.1ms)
+
+
+Started GET "/api/v1/enquiries/by_email/client%40email.com" for ::1 at 2024-12-15 16:37:28 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/client%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/client%40email.com" for ::1 at 2024-12-15 16:37:28 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/client%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/client%40email.com" for ::1 at 2024-12-15 16:39:14 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/client%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/client%40email.com" for ::1 at 2024-12-15 16:39:14 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/client%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/client%40email.com" for ::1 at 2024-12-15 16:39:39 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/client%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/client%40email.com" for ::1 at 2024-12-15 16:39:39 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/client%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/client%40email.com" for ::1 at 2024-12-15 16:39:51 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/client%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/client%40email.com" for ::1 at 2024-12-15 16:39:52 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/client%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/client%40email.com" for ::1 at 2024-12-15 16:40:06 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/client%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/client%40email.com" for ::1 at 2024-12-15 16:40:06 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/client%40email.com"):
+  
+Started POST "/api/v1/users/sign_in" for ::1 at 2024-12-15 16:41:38 +0200
+Processing by Api::V1::Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (6.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:21:in `create'
+  [1m[36mUser Update (8.2ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "auth_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2024-12-15 14:41:38.837161"], ["auth_token", "[FILTERED]"], ["id", 4]]
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (7.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:21:in `create'
+Completed 200 OK in 649ms (Views: 4.6ms | ActiveRecord: 61.5ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/enquiries/by_email/client%40email.com" for ::1 at 2024-12-15 16:41:39 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/client%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/client%40email.com" for ::1 at 2024-12-15 16:41:39 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/client%40email.com"):
+  
+Started POST "/api/v1/users" for ::1 at 2024-12-15 16:42:35 +0200
+Processing by Api::V1::Users::RegistrationsController#create as HTML
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]", "role"=>"client"}, "registration"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]", "role"=>"client"}}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users/registrations_controller.rb:12:in `create'
+  [1m[36mUser Exists? (4.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users/registrations_controller.rb:12:in `create'
+  [1m[36mUser Create (7.3ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "role", "auth_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2024-12-15 14:42:35.731823"], ["updated_at", "2024-12-15 14:42:35.731823"], ["role", "client"], ["auth_token", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/users/registrations_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users/registrations_controller.rb:12:in `create'
+Completed 201 Created in 263ms (Views: 8.8ms | ActiveRecord: 12.4ms (2 queries, 0 cached) | GC: 2.4ms)
+
+
+Started GET "/api/v1/enquiries/by_email/client%40email.com" for ::1 at 2024-12-15 16:42:35 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/client%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/client%40email.com" for ::1 at 2024-12-15 16:42:36 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/client%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/client%40email.com" for ::1 at 2024-12-15 16:45:24 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/client%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/client%40email.com" for ::1 at 2024-12-15 16:45:24 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/client%40email.com"):
+  
+Started POST "/api/v1/users" for ::1 at 2024-12-15 16:50:44 +0200
+Processing by Api::V1::Users::RegistrationsController#create as HTML
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]", "role"=>"client"}, "registration"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]", "role"=>"client"}}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users/registrations_controller.rb:12:in `create'
+  [1m[36mUser Exists? (25.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users/registrations_controller.rb:12:in `create'
+  [1m[36mUser Create (1.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "role", "auth_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2024-12-15 14:50:46.526662"], ["updated_at", "2024-12-15 14:50:46.526662"], ["role", "client"], ["auth_token", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/users/registrations_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (7.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users/registrations_controller.rb:12:in `create'
+Completed 201 Created in 332ms (Views: 0.4ms | ActiveRecord: 58.1ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/enquiries/by_email/client%40email.com" for ::1 at 2024-12-15 16:50:46 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/client%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/client%40email.com" for ::1 at 2024-12-15 16:50:46 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/client%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/client%40email.com" for ::1 at 2024-12-15 16:51:14 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/client%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/client%40email.com" for ::1 at 2024-12-15 16:51:14 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/client%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/client%40email.com" for ::1 at 2024-12-15 16:51:56 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/client%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/client%40email.com" for ::1 at 2024-12-15 16:51:56 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/client%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/client%40email.com" for ::1 at 2024-12-15 16:52:55 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/client%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/client%40email.com" for ::1 at 2024-12-15 16:52:55 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/client%40email.com"):
+  
+Started POST "/api/v1/users/sign_in" for ::1 at 2024-12-15 16:53:12 +0200
+Processing by Api::V1::Users::SessionsController#create as HTML
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}, "session"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:21:in `create'
+  [1m[36mUser Update (3.5ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "auth_token" = $2 WHERE "users"."id" = $3[0m  [["updated_at", "2024-12-15 14:53:13.281372"], ["auth_token", "[FILTERED]"], ["id", 6]]
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:21:in `create'
+  [1m[36mTRANSACTION (3.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users/sessions_controller.rb:21:in `create'
+Completed 200 OK in 455ms (Views: 0.3ms | ActiveRecord: 9.6ms (2 queries, 0 cached) | GC: 56.1ms)
+
+
+Started GET "/api/v1/enquiries/by_email/testing%40email.com" for ::1 at 2024-12-15 16:53:13 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/testing%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/testing%40email.com" for ::1 at 2024-12-15 16:53:13 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/testing%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/testing%40email.com" for ::1 at 2024-12-15 16:54:14 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/testing%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/testing%40email.com" for ::1 at 2024-12-15 16:54:15 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/testing%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/testing%40email.com" for ::1 at 2024-12-15 16:59:53 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/testing%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/testing%40email.com" for ::1 at 2024-12-15 16:59:53 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/testing%40email.com"):
+  
+Started POST "/api/v1/users" for ::1 at 2024-12-15 17:04:26 +0200
+Processing by Api::V1::Users::RegistrationsController#create as HTML
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]", "role"=>"client"}, "registration"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]", "role"=>"client"}}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users/registrations_controller.rb:12:in `create'
+  [1m[36mUser Exists? (103.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users/registrations_controller.rb:12:in `create'
+  [1m[36mUser Create (12.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "role", "auth_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2024-12-15 15:04:26.491155"], ["updated_at", "2024-12-15 15:04:26.491155"], ["role", "client"], ["auth_token", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/users/registrations_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (7.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users/registrations_controller.rb:12:in `create'
+Completed 201 Created in 433ms (Views: 1.2ms | ActiveRecord: 142.8ms (2 queries, 0 cached) | GC: 6.7ms)
+
+
+Started GET "/api/v1/enquiries/by_email/testing2%40email.com" for ::1 at 2024-12-15 17:04:26 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/testing2%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/testing2%40email.com" for ::1 at 2024-12-15 17:04:26 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/testing2%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/testing2%40email.com" for ::1 at 2024-12-15 17:16:34 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/testing2%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/testing2%40email.com" for ::1 at 2024-12-15 17:16:34 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/testing2%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/testing2%40email.com" for ::1 at 2024-12-15 18:31:00 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/testing2%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/testing2%40email.com" for ::1 at 2024-12-15 18:31:01 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/testing2%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/testing2%40email.com" for ::1 at 2024-12-15 18:31:19 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/testing2%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/testing2%40email.com" for ::1 at 2024-12-15 18:31:19 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/testing2%40email.com"):
+  
+Started POST "/api/v1/users" for ::1 at 2024-12-15 18:33:03 +0200
+Processing by Api::V1::Users::RegistrationsController#create as HTML
+  Parameters: {"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]", "role"=>"client"}, "registration"=>{"user"=>{"email"=>"[FILTERED]", "password"=>"[FILTERED]", "role"=>"client"}}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users/registrations_controller.rb:12:in `create'
+  [1m[36mUser Exists? (364.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users/registrations_controller.rb:12:in `create'
+  [1m[36mUser Create (23.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at", "role", "auth_token") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["email", "[FILTERED]"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2024-12-15 16:33:04.119556"], ["updated_at", "2024-12-15 16:33:04.119556"], ["role", "client"], ["auth_token", "[FILTERED]"]]
+  ↳ app/controllers/api/v1/users/registrations_controller.rb:12:in `create'
+  [1m[36mTRANSACTION (26.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users/registrations_controller.rb:12:in `create'
+Completed 201 Created in 771ms (Views: 0.8ms | ActiveRecord: 628.0ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/enquiries/by_email/testing3%40email.com" for ::1 at 2024-12-15 18:33:04 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/testing3%40email.com"):
+  
+Started GET "/api/v1/enquiries/by_email/testing3%40email.com" for ::1 at 2024-12-15 18:33:04 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/enquiries/by_email/testing3%40email.com"):
+  
+Started POST "/api/v1/enquiries" for ::1 at 2024-12-15 18:33:40 +0200
+Processing by Api::V1::EnquiriesController#create as HTML
+  Parameters: {"enquiry"=>{"name"=>"Testing", "surname"=>"Testing3", "phonenumber"=>"0825352102", "email"=>"[FILTERED]", "gender"=>"", "dob"=>"Sun Dec 15 2024 18:33:18 GMT+0200 (South Africa Standard Time)", "maritalStatus"=>"", "residentialAddress"=>"", "entryDate"=>"Sun Dec 15 2024 18:33:18 GMT+0200 (South Africa Standard Time)", "passportNumber"=>"", "referenceNumber"=>"", "serviceType"=>"", "elaborate"=>"Testing3", "document_upload"=>"", "immigrationStatus"=>"", "venue"=>"", "appointmentType"=>"", "appointmentDate"=>"Sun Dec 15 2024 18:33:18 GMT+0200 (South Africa Standard Time)", "nationality"=>"", "idNumber"=>"", "city"=>"", "address"=>"", "postalCode"=>"", "additionalInfo"=>"", "status"=>"", "createdAt"=>"Sun Dec 15 2024 18:33:18 GMT+0200 (South Africa Standard Time)", "updatedAt"=>"Sun Dec 15 2024 18:33:18 GMT+0200 (South Africa Standard Time)"}}
+Authorization Header: Bearer 9843c9897be94ae04400563600ea2e01be7a1f63
+Extracted Token: 9843c9897be94ae04400563600ea2e01be7a1f63
+  [1m[36mUser Load (91.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "[FILTERED]"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:22:in `authenticate_user!'
+User found: #<User id: 8, email: [FILTERED], created_at: "2024-12-15 16:33:04.119556000 +0000", updated_at: "2024-12-15 16:33:04.119556000 +0000", role: "client", auth_token: [FILTERED]>
+[31mUnpermitted parameters: :maritalStatus, :residentialAddress, :entryDate, :passportNumber, :referenceNumber, :serviceType, :document_upload, :immigrationStatus, :venue, :appointmentType, :appointmentDate, :nationality, :idNumber, :city, :address, :postalCode, :additionalInfo, :status, :createdAt, :updatedAt. Context: { controller: Api::V1::EnquiriesController, action: create, request: #<ActionDispatch::Request:0x000000012ab9bb00>, params: {"enquiry"=>{"name"=>"Testing", "surname"=>"Testing3", "phonenumber"=>"0825352102", "email"=>"[FILTERED]", "gender"=>"", "dob"=>"Sun Dec 15 2024 18:33:18 GMT+0200 (South Africa Standard Time)", "maritalStatus"=>"", "residentialAddress"=>"", "entryDate"=>"Sun Dec 15 2024 18:33:18 GMT+0200 (South Africa Standard Time)", "passportNumber"=>"", "referenceNumber"=>"", "serviceType"=>"", "elaborate"=>"Testing3", "document_upload"=>"", "immigrationStatus"=>"", "venue"=>"", "appointmentType"=>"", "appointmentDate"=>"Sun Dec 15 2024 18:33:18 GMT+0200 (South Africa Standard Time)", "nationality"=>"", "idNumber"=>"", "city"=>"", "address"=>"", "postalCode"=>"", "additionalInfo"=>"", "status"=>"", "createdAt"=>"Sun Dec 15 2024 18:33:18 GMT+0200 (South Africa Standard Time)", "updatedAt"=>"Sun Dec 15 2024 18:33:18 GMT+0200 (South Africa Standard Time)"}, "controller"=>"api/v1/enquiries", "action"=>"create"} }[0m
+  [1m[36mTRANSACTION (16.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/enquiries_controller.rb:20:in `create'
+  [1m[36mEnquiry Create (124.6ms)[0m  [1m[32mINSERT INTO "enquiries" ("name", "surname", "phonenumber", "email", "gender", "dob", "marital_status", "residential_address", "entry_date", "passport_number", "reference_number", "service_type", "elaborate", "immigration_status", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17) RETURNING "id"[0m  [["name", "Testing"], ["surname", "Testing3"], ["phonenumber", "0825352102"], ["email", "[FILTERED]"], ["gender", ""], ["dob", "2024-12-15"], ["marital_status", nil], ["residential_address", nil], ["entry_date", nil], ["passport_number", nil], ["reference_number", nil], ["service_type", nil], ["elaborate", "Testing3"], ["immigration_status", nil], ["created_at", "2024-12-15 16:33:41.187022"], ["updated_at", "2024-12-15 16:33:41.187022"], ["user_id", 8]]
+  ↳ app/controllers/api/v1/enquiries_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (237.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/enquiries_controller.rb:20:in `create'
+Completed 201 Created in 943ms (Views: 2.2ms | ActiveRecord: 478.8ms (2 queries, 0 cached) | GC: 2.5ms)
+
+

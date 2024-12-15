@@ -10,9 +10,17 @@ module Api
         user = User.new(sign_up_params)
 
         if user.save
-          render json: { message: 'User registered successfully.', user: user }, status: :created
+          render json: {
+            message: 'User created successfully',
+            user: {
+              id: user.id,
+              email: user.email,
+              role: user.role,
+              auth_token: user.auth_token
+            }
+          }, status: :created
         else
-          render json: { error: 'Registration failed.', details: user.errors.full_messages }, status: :unprocessable_entity
+          render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
         end
       end
 
