@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       # Default route for /api/v1
       get '/', to: 'base#index'
+      # get 'enquiries/by_user/:id', to: 'enquiries#show_by_id'
       get 'enquiries/by_user/:id', to: 'enquiries#show_by_id'
 
       # Devise user routes
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
   # Client namespace
   namespace :client do
     resources :dashboard, only: %i[index show]
+    get 'enquiries/by_user/:id', to: 'enquiries#show_by_id'
   end
 
   # Root path
