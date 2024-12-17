@@ -1,19 +1,26 @@
 module Api
   module V1
     class AppointmentsController < ApplicationController
-      before_action :set_appointment, only: [:show, :update, :destroy]
+      before_action :authenticate_user! # Authenticate all actions
+      before_action :set_appointment, only: %i[show update destroy]
 
+      # GET /api/v1/appointments
       def index
-        appointments = Appointment.all
+        # Only return appointments belonging to the current user
+        appointments = current_user.appointments
         render json: appointments, status: :ok
       end
 
+      # GET /api/v1/appointments/:id
       def show
+        # Ensure we are fetching only the current user's appointment
         render json: @appointment, status: :ok
       end
 
+      # POST /api/v1/appointments
       def create
-        appointment = Appointment.new(appointment_params)
+        # Associate the appointment with the current user
+        appointment = current_user.appointments.build(appointment_params)
         if appointment.save
           render json: appointment, status: :created
         else
@@ -21,7 +28,10 @@ module Api
         end
       end
 
+      # PUT /api/v1/appointments/:id
+      # PATCH /api/v1/appointments/:id
       def update
+        # Ensure only the owner can update their appointment
         if @appointment.update(appointment_params)
           render json: @appointment, status: :ok
         else
@@ -29,21 +39,28 @@ module Api
         end
       end
 
+      # DELETE /api/v1/appointments/:id
       def destroy
+        # Ensure only the owner can delete their appointment
         @appointment.destroy
         render json: { message: 'Appointment deleted successfully' }, status: :ok
       end
 
       private
 
+      # Ensure we fetch the appointment belonging to the current user
       def set_appointment
-        @appointment = Appointment.find(params[:id])
+        @appointment = current_user.appointments.find(params[:id])
       rescue ActiveRecord::RecordNotFound
         render json: { error: 'Appointment not found' }, status: :not_found
       end
 
+      # Strong parameters to permit only allowed attributes
       def appointment_params
-        params.require(:appointment).permit(:name, :surname, :phonenumber, :email, :service_type, :venue, :appointment_date, :appointment_type)
+        params.require(:appointment).permit(
+          :name, :surname, :phonenumber, :email,
+          :service_type, :venue, :appointment_date, :appointment_type
+        )
       end
     end
   end
