@@ -35,30 +35,31 @@ class Api::V1::EnquiriesController < ApplicationController
   end
 
   def show_by_id
-    token = request.headers['Authorization']&.split(' ')&.last
     Rails.logger.info "Authorization Header: #{request.headers['Authorization']}"
-    Rails.logger.info "Extracted Token: #{token}"
 
-    @current_user = User.find_by(auth_token: token)
-    Rails.logger.info "User Found: #{@current_user.inspect}"
+    # Use the authenticated user
+    if current_user
+      Rails.logger.info "Current User: #{current_user.inspect}"
 
-    user = User.find_by(id: params[:id])
-    Rails.logger.info "Target User: #{user.inspect}"
-
-    if @current_user
-      # Role-based access logic
-      if @current_user.role == 'superadmin'
-        # Superadmin can fetch all enquiries of any user
-        enquiries = user&.enquiries
-        render json: enquiries || { error: 'User not found' }, status: :ok
-      elsif @current_user.role == 'admin'
-        # Admin can view enquiries, but maybe only a subset (e.g., limited)
-        enquiries = user&.enquiries&.limit(10)
-        render json: enquiries || { error: 'User not found' }, status: :ok
-      elsif @current_user.role == 'client' && user == @current_user
-        # Client can only fetch their own enquiries
-        enquiries = @current_user.enquiries
-        render json: enquiries, status: :ok
+      if current_user.role == 'superadmin'
+        # Superadmin can view all users' enquiries
+        target_user = User.find_by(id: params[:id])
+        if target_user
+          render json: target_user.enquiries, status: :ok
+        else
+          render json: { error: 'User not found' }, status: :not_found
+        end
+      elsif current_user.role == 'admin'
+        # Admins can view a subset of enquiries
+        target_user = User.find_by(id: params[:id])
+        if target_user
+          render json: target_user.enquiries.limit(10), status: :ok
+        else
+          render json: { error: 'User not found' }, status: :not_found
+        end
+      elsif current_user.role == 'client'
+        # Clients can only view their own enquiries
+        render json: current_user.enquiries, status: :ok
       else
         render json: { error: 'Unauthorized access' }, status: :forbidden
       end
