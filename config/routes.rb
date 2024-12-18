@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get '/', to: 'base#index'
       # get 'enquiries/by_user/:id', to: 'enquiries#show_by_id'
       get 'enquiries/by_user/:id', to: 'enquiries#show_by_id'
+      get 'appointments/by_user/:id', to: 'appointments#show_by_user'
 
       # Devise user routes
       devise_for :users, controllers: {
