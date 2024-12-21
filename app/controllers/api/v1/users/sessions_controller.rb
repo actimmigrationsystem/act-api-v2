@@ -24,6 +24,7 @@ module Api
           render json: {
             message: 'Logged in successfully.',
             user: {
+              id: user.id,
               email: user.email,
               role: user.role,
               auth_token: token # Return the token
