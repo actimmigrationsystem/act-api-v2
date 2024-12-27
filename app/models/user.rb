@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable, and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  validates :email, uniqueness: true
 
   # Callbacks
   before_save :ensure_auth_token
@@ -25,6 +26,6 @@ class User < ApplicationRecord
 
   # Set the default role for new users
   def set_default_role
-    self.role ||= "client"
+    self.role ||= 'client'
   end
 end

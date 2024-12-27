@@ -7,15 +7,19 @@ Rails.application.routes.draw do
     namespace :v1 do
       # Default route for /api/v1
       get '/', to: 'base#index'
-      # get 'enquiries/by_user/:id', to: 'enquiries#show_by_id'
       get 'enquiries/by_user/:id', to: 'enquiries#show_by_id'
       get 'appointments/by_user/:id', to: 'appointments#show_by_user'
+      get 'users/registrations/exists', to: 'registrations#exists'
 
       # Devise user routes
       devise_for :users, controllers: {
         registrations: 'api/v1/users/registrations',
         sessions: 'api/v1/users/sessions'
       }
+
+      devise_scope :api_v1_user do
+        get 'users/exists', to: 'users/registrations#exists'
+      end
 
       # Other resources
       resources :enquiries, only: %i[index show create update destroy]
