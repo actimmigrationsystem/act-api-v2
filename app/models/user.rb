@@ -1,19 +1,31 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  before_create :generate_auth_token
-  validates :role, inclusion: { in: %w[client admin superadmin] }
-
-  before_validation :set_default_role, on: :create
-  has_one :profile, dependent: :destroy
+  # Include default Devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable, and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  validates :email, uniqueness: true
+
+  # Callbacks
+  before_save :ensure_auth_token
+  before_validation :set_default_role, on: :create
+
+  # Associations
+  has_one :profile, dependent: :destroy
+  has_many :enquiries, dependent: :destroy
+  has_many :appointments, dependent: :destroy
+
+  # Validations
+  validates :role, inclusion: { in: %w[client admin superadmin] }
 
   private
-  def generate_auth_token
-    self.auth_token = SecureRandom.hex(20) # Generates a random 20-character token
+
+  # Ensure `auth_token` is generated before saving the user
+  def ensure_auth_token
+    self.auth_token ||= SecureRandom.hex(20) # Generates a random 20-character token
   end
+
+  # Set the default role for new users
   def set_default_role
-    self.role ||= "client"
+    self.role ||= 'client'
   end
 end

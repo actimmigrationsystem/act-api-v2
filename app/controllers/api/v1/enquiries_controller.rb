@@ -1,20 +1,22 @@
 class Api::V1::EnquiriesController < ApplicationController
-  before_action :set_enquiry, only: [:show, :update, :destroy]
+  before_action :authenticate_user! # Authenticate all actions
+  before_action :set_enquiry, only: %i[show update destroy]
 
   # GET /api/v1/enquiries
   def index
-    enquiries = Enquiry.all
+    enquiries = current_user.enquiries # Only return enquiries belonging to the current user
     render json: enquiries, status: :ok
   end
 
   # GET /api/v1/enquiries/:id
   def show
-    render json: @enquiry, status: :ok
+    @enquiries = current_user.enquiries
+    render json: @enquiries
   end
 
   # POST /api/v1/enquiries
   def create
-    enquiry = Enquiry.new(enquiry_params)
+    enquiry = current_user.enquiries.build(enquiry_params) # Associate enquiry with the logged-in user
     if enquiry.save
       render json: enquiry, status: :created
     else
@@ -32,6 +34,40 @@ class Api::V1::EnquiriesController < ApplicationController
     end
   end
 
+  def show_by_id
+    Rails.logger.info "Authorization Header: #{request.headers['Authorization']}"
+
+    # Use the authenticated user
+    if current_user
+      Rails.logger.info "Current User: #{current_user.inspect}"
+
+      if current_user.role == 'superadmin'
+        # Superadmin can view all users' enquiries
+        target_user = User.find_by(id: params[:id])
+        if target_user
+          render json: target_user.enquiries, status: :ok
+        else
+          render json: { error: 'User not found' }, status: :not_found
+        end
+      elsif current_user.role == 'admin'
+        # Admins can view a subset of enquiries
+        target_user = User.find_by(id: params[:id])
+        if target_user
+          render json: target_user.enquiries.limit(10), status: :ok
+        else
+          render json: { error: 'User not found' }, status: :not_found
+        end
+      elsif current_user.role == 'client'
+        # Clients can only view their own enquiries
+        render json: current_user.enquiries, status: :ok
+      else
+        render json: { error: 'Unauthorized access' }, status: :forbidden
+      end
+    else
+      render json: { error: 'Unauthorized' }, status: :unauthorized
+    end
+  end
+
   # DELETE /api/v1/enquiries/:id
   def destroy
     @enquiry.destroy
@@ -40,30 +76,18 @@ class Api::V1::EnquiriesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_enquiry
-    @enquiry = Enquiry.find(params[:id])
+    @enquiry = current_user.enquiries.find(params[:id]) # Ensure the enquiry belongs to the current user
   rescue ActiveRecord::RecordNotFound
     render json: { error: 'Enquiry not found' }, status: :not_found
   end
 
-  # Only allow a list of trusted parameters through.
   def enquiry_params
     params.require(:enquiry).permit(
-      :name,
-      :surname,
-      :phonenumber,
-      :email,
-      :gender,
-      :dob,
-      :marital_status,
-      :residential_address,
-      :entry_date,
-      :passport_number,
-      :reference_number,
-      :service_type,
-      :elaborate,
-      :immigration_status
+      :name, :surname, :phonenumber, :email, :gender, :dob,
+      :marital_status, :residential_address, :entry_date,
+      :passport_number, :reference_number, :service_type,
+      :elaborate, :immigration_status
     )
   end
 end
