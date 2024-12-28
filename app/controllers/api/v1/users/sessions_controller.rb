@@ -5,7 +5,6 @@ module Api
 
       # Skip authentication for login requests
       skip_before_action :authenticate_user!, only: [:create]
-
       def create
         # Find user by email
         user = User.find_by(email: sign_in_params[:email])
