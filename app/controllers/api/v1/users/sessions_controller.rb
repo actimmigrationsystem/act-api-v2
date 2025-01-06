@@ -3,54 +3,44 @@ module Api
     class Users::SessionsController < Devise::SessionsController
       respond_to :json
 
-      # Skip authentication for login requests
-      skip_before_action :authenticate_user!, only: [:create]
+      # Skip authentication for login and logout requests
+      skip_before_action :authenticate_user!, only: %i[create destroy]
+      skip_before_action :verify_authenticity_token, only: %i[create destroy]
 
       def create
-        # Find user by email
-        user = User.find_by(email: sign_in_params[:email])
+        # Authenticate the user using Devise's built-in methods
+        self.resource = warden.authenticate!(auth_options)
 
-        if user.nil?
-          render json: { error: 'Email not found.' }, status: :not_found
-          return
-        end
+        if resource
+          sign_in(resource_name, resource) # Sign the user in and create a session
 
-        if user.valid_password?(sign_in_params[:password])
-          # Generate a new token and update the user
-          token = SecureRandom.hex(20)
-          user.update(auth_token: token)
-
-          # Respond with user details and the token
           render json: {
             message: 'Logged in successfully.',
             user: {
-              id: user.id,
-              email: user.email,
-              role: user.role,
-              auth_token: token # Return the token
+              id: resource.id,
+              email: resource.email,
+              role: resource.role
             }
           }, status: :ok
         else
-          # Invalid password
-          render json: { error: 'Invalid password.' }, status: :unauthorized
+          render json: { error: 'Invalid credentials.' }, status: :unauthorized
+        end
+      end
+
+      def destroy
+        if current_user
+          sign_out(resource_name) # Sign out the user and clear the session
+          render json: { message: 'Logged out successfully.' }, status: :ok
+        else
+          render json: { error: 'No user is currently signed in.' }, status: :unauthorized
         end
       end
 
       private
 
-      # Strong parameters for sign_in
+      # Strong parameters for sign-in
       def sign_in_params
         params.require(:user).permit(:email, :password)
-      end
-
-      def respond_to_on_destroy
-        if current_user
-          # Clear token on logout (optional)
-          current_user.update(auth_token: nil)
-          render json: { message: 'Logged out successfully.' }, status: :ok
-        else
-          render json: { error: 'Failed to log out. Please try again.' }, status: :unauthorized
-        end
       end
     end
   end

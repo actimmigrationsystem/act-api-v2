@@ -1,34 +1,21 @@
-class ApplicationController < ActionController::API
+class ApplicationController < ActionController::Base
+  protect_from_forgery with: :exception
+
+  # Skip CSRF checks for JSON requests
+  skip_before_action :verify_authenticity_token, if: -> { request.format.json? }
+
   before_action :authenticate_user!, unless: -> { request.path.start_with?('/assets', '/public') }
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-  private
+  protected
 
-  def current_user
-    auth_header = request.headers['Authorization']
-    token = auth_header&.split(' ')&.last
-    @current_user ||= User.find_by(auth_token: token) if token
+  # Allow additional parameters for Devise sign-in and sign-up
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_in, keys: %i[email password])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[email password role])
   end
 
-  def authenticate_user!
-    token = request.headers['Authorization']&.split(' ')&.last
-    Rails.logger.debug "Authorization Header: #{request.headers['Authorization']}"
-    Rails.logger.debug "Extracted Token: #{token}"
-
-    if token.blank?
-      Rails.logger.debug 'No token provided in the Authorization header.'
-      return render json: { error: 'Unauthorized: Missing Token' }, status: :unauthorized
-    end
-
-    @current_user = User.find_by(auth_token: token)
-
-    if @current_user
-      Rails.logger.debug "User found: #{@current_user.inspect}"
-    else
-      Rails.logger.debug "User not found for token: #{token}"
-      render json: { error: 'Unauthorized: Invalid Token' }, status: :unauthorized
-    end
-  end
-
+  # Role-based authorization (optional, depending on your app)
   def authorize_superadmin
     render json: { error: 'Access denied' }, status: :forbidden unless current_user&.role == 'superadmin'
   end
