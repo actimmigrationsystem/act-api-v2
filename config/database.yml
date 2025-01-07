@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV["MY_APP_DATABASE_URL"] %>
   database: act_api_production
   username: act_api
   password: <%= ENV["ACT_API_DATABASE_PASSWORD"] %>
