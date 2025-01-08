@@ -35,12 +35,12 @@ gem 'rack-cors'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri windows], require: 'debug/prelude'
-
-  # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
-  gem 'brakeman', require: false
   gem 'rswag-api'
   gem 'rswag-specs'
   gem 'rswag-ui'
+
+  # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
+  gem 'brakeman', require: false
   gem 'rubocop-rails-omakase', require: false # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
 end
 

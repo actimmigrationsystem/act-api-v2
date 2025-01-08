@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
+require 'rswag/specs'
+require 'rswag/api'
+require 'rswag/ui'
 
 RSpec.configure do |config|
   # Specify a root folder where Swagger JSON files are generated
@@ -24,10 +27,11 @@ RSpec.configure do |config|
       paths: {},
       servers: [
         {
-          url: 'https://{defaultHost}',
+          url: 'https://{defaultHost}', # url: 'http://localhost:3000',
           variables: {
             defaultHost: {
-              default: 'https://act-api-v2.onrender.com/'
+              default: 'https://act-api-v2.onrender.com/api-docs'
+
             }
           }
         }
@@ -40,4 +44,5 @@ RSpec.configure do |config|
   # the key, this may want to be changed to avoid putting yaml in json files.
   # Defaults to json. Accepts ':json' and ':yaml'.
   config.openapi_format = :yaml
+  # config.swagger_format = :yaml
 end
