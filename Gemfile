@@ -38,12 +38,10 @@ group :development, :test do
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem 'brakeman', require: false
-
-  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem 'rswag-api'
   gem 'rswag-specs'
   gem 'rswag-ui'
-  gem 'rubocop-rails-omakase', require: false
+  gem 'rubocop-rails-omakase', require: false # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
 end
 
 gem 'dotenv-rails', '~> 3.1'
