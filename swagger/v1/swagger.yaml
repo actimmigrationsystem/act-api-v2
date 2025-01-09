@@ -6,20 +6,393 @@ info:
 paths:
   "/api/v1/appointments":
     get:
-      summary: list appointments
+      summary: List all appointments
+      description: Retrieve all appointments belonging to the authenticated user.
       tags:
       - Appointments
+      security:
+      - bearerAuth: []
       responses:
         '200':
-          description: successful
+          description: Appointments retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/Appointment"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+    post:
+      summary: Create a new appointment
+      description: Create a new appointment associated with the authenticated user.
+      tags:
+      - Appointments
+      security:
+      - bearerAuth: []
+      parameters: []
+      responses:
+        '201':
+          description: Appointment created successfully
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Appointment"
+        '422':
+          description: Unprocessable entity
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: John
+                surname:
+                  type: string
+                  example: Doe
+                phonenumber:
+                  type: string
+                  example: "+1234567890"
+                email:
+                  type: string
+                  example: john.doe@example.com
+                service_type:
+                  type: string
+                  example: Immigration Consultation
+                venue:
+                  type: string
+                  example: Main Office
+                appointment_date:
+                  type: string
+                  format: date
+                  example: '2025-01-10'
+                appointment_type:
+                  type: string
+                  example: Virtual
+              required:
+              - name
+              - surname
+              - phonenumber
+              - email
+              - service_type
+              - venue
+              - appointment_date
+              - appointment_type
+  "/api/v1/appointments/{id}":
+    get:
+      summary: Retrieve a specific appointment
+      description: Retrieve a specific appointment belonging to the authenticated
+        user.
+      tags:
+      - Appointments
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+        required: true
+      responses:
+        '200':
+          description: Appointment retrieved successfully
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Appointment"
+        '404':
+          description: Appointment not found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+    put:
+      summary: Update an appointment
+      description: Update an appointment belonging to the authenticated user.
+      tags:
+      - Appointments
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+        required: true
+      responses:
+        '200':
+          description: Appointment updated successfully
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Appointment"
+        '422':
+          description: Unprocessable entity
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Updated John
+              required:
+              - name
+    delete:
+      summary: Delete an appointment
+      description: Delete an appointment belonging to the authenticated user.
+      tags:
+      - Appointments
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+        required: true
+      responses:
+        '200':
+          description: Appointment deleted successfully
+        '404':
+          description: Appointment not found
+        '401':
+          description: Unauthorized
   "/api/v1/enquiries":
     get:
-      summary: list enquiries
+      summary: List all enquiries
+      description: Retrieve all enquiries belonging to the authenticated user.
       tags:
       - Enquiries
+      security:
+      - bearerAuth: []
       responses:
         '200':
-          description: successful
+          description: Enquiries retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/Enquiry"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+    post:
+      summary: Create a new enquiry
+      description: Create a new enquiry associated with the authenticated user.
+      tags:
+      - Enquiries
+      security:
+      - bearerAuth: []
+      parameters: []
+      responses:
+        '201':
+          description: Enquiry created successfully
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Enquiry"
+        '422':
+          description: Unprocessable entity
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: John
+                surname:
+                  type: string
+                  example: Doe
+                phonenumber:
+                  type: string
+                  example: "+123456789"
+                email:
+                  type: string
+                  example: john.doe@example.com
+                gender:
+                  type: string
+                  example: Male
+                dob:
+                  type: string
+                  format: date
+                  example: '1990-01-01'
+                marital_status:
+                  type: string
+                  example: Single
+                residential_address:
+                  type: string
+                  example: 123 Main Street
+                entry_date:
+                  type: string
+                  format: date
+                  example: '2022-01-01'
+                passport_number:
+                  type: string
+                  example: A12345678
+                reference_number:
+                  type: string
+                  example: REF001
+                service_type:
+                  type: string
+                  example: Immigration Consultation
+                elaborate:
+                  type: string
+                  example: Details of the enquiry
+                immigration_status:
+                  type: string
+                  example: Pending
+              required:
+              - name
+              - surname
+              - phonenumber
+              - email
+              - service_type
+  "/api/v1/enquiries/{id}":
+    get:
+      summary: Retrieve a specific enquiry
+      description: Retrieve a specific enquiry belonging to the authenticated user.
+      tags:
+      - Enquiries
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+        required: true
+      responses:
+        '200':
+          description: Enquiry retrieved successfully
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Enquiry"
+        '404':
+          description: Enquiry not found
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+    put:
+      summary: Update an enquiry
+      description: Update an enquiry belonging to the authenticated user.
+      tags:
+      - Enquiries
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+        required: true
+      responses:
+        '200':
+          description: Enquiry updated successfully
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Enquiry"
+        '422':
+          description: Unprocessable entity
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/Error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: John Updated
+              required:
+              - name
+    delete:
+      summary: Delete an enquiry
+      description: Delete an enquiry belonging to the authenticated user.
+      tags:
+      - Enquiries
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+        required: true
+      responses:
+        '200':
+          description: Enquiry deleted successfully
+        '404':
+          description: Enquiry not found
+        '401':
+          description: Unauthorized
 servers:
 - url: https://{defaultHost}
   variables:
