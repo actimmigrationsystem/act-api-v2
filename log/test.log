@@ -27,3 +27,4 @@ ActionController::RoutingError (No route matches [GET] "/act-api-v2.onrender.com
 [dotenv] Loaded [33m.env[0m
 [dotenv] Loaded [33m.env[0m
 [dotenv] Loaded [33m.env[0m
+[dotenv] Loaded [33m.env[0m
