@@ -22,20 +22,62 @@ RSpec.configure do |config|
       openapi: '3.0.1',
       info: {
         title: 'Act Immigration API V2',
+        description: 'This API provides endpoints for managing appointments and related resources. Each endpoint is secured and role-based access applies.',
+        termsOfService: 'https://act-api-v2.onrender.com/terms',
+        contact: {
+          name: 'Support Team',
+          email: 'support@act-immigration.com',
+          url: 'https://act-api-v2.onrender.com/contact'
+        },
+        license: {
+          name: 'MIT License',
+          url: 'https://opensource.org/licenses/MIT'
+        },
         version: 'v1'
       },
-      paths: {},
       servers: [
         {
-          url: 'https://{defaultHost}', # url: 'http://localhost:3000',
-          variables: {
-            defaultHost: {
-              default: 'https://act-api-v2.onrender.com/api-docs'
-
+          url: 'https://act-api-v2.onrender.com',
+          description: 'Production server'
+        },
+        {
+          url: 'http://localhost:3000',
+          description: 'Local development server'
+        }
+      ],
+      components: {
+        securitySchemes: {
+          bearerAuth: {
+            type: :http,
+            scheme: :bearer,
+            bearerFormat: :JWT
+          }
+        },
+        schemas: {
+          Appointment: {
+            type: :object,
+            properties: {
+              id: { type: :integer, example: 1 },
+              name: { type: :string, example: 'John' },
+              surname: { type: :string, example: 'Doe' },
+              phonenumber: { type: :string, example: '+1234567890' },
+              email: { type: :string, example: 'john.doe@example.com' },
+              service_type: { type: :string, example: 'Immigration Consultation' },
+              venue: { type: :string, example: 'Main Office' },
+              appointment_date: { type: :string, format: :date, example: '2025-01-10' },
+              appointment_type: { type: :string, example: 'Virtual' },
+              created_at: { type: :string, format: :date - time },
+              updated_at: { type: :string, format: :date - time }
+            }
+          },
+          Error: {
+            type: :object,
+            properties: {
+              error: { type: :string, example: 'Unauthorized access' }
             }
           }
         }
-      ]
+      }
     }
   }
 
