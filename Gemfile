@@ -39,7 +39,8 @@ group :development, :test do
   gem 'rswag-api'
   gem 'rswag-specs'
   gem 'rswag-ui'
-  gem 'sprockets-rails'
+
+  # gem 'sprockets-rails'
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem 'brakeman', require: false

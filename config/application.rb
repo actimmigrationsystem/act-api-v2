@@ -29,7 +29,7 @@ module ActApi
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
     # config.serve_static_files = true
-    config.assets.enabled = true
-    config.assets.initialize_on_precompile = false
+    # config.assets.enabled = false
+    # config.assets.initialize_on_precompile = false
   end
 end
